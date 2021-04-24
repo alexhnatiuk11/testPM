@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="SearchSuite" parallel="methods" thread-count="3"> >
+    <test name="SearchTest">
+            <classes>
+                <class name = "SearchTest" />
+            </classes>
+    </test>
+</suite>
