@@ -259,7 +259,7 @@ public class BreweryModel {
 
     @Override
     public String toString() {
-        return "BrewerieModel{" +
+        return "BreweryModel{" +
                 "id=" + id +
                 ", obdbId='" + obdbId + '\'' +
                 ", name='" + name + '\'' +

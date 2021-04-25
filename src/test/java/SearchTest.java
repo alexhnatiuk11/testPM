@@ -10,7 +10,6 @@ import java.util.HashMap;
 import java.util.List;
 
 public class SearchTest extends BaseTest {
-    BreweriesController breweriesController = new BreweriesController();
 
     @Test(dataProvider = "dataProviderByAllFields")
     public void assertFullMatchedInAllFields(String searchParam, int expectedCount) throws IOException {
@@ -19,7 +18,7 @@ public class SearchTest extends BaseTest {
         List<HashMap<String,String>> listOfBreweriesHashMaps = mapper.
                 readValue(searchResponse, new TypeReference<List<HashMap<String,String>>>(){});
 
-        String expectedText = searchParam.trim().toLowerCase();
+        String expectedText = searchParam.trim().toLowerCase().replace('_',' ');
 
         long actualCountOfMatchedText = listOfBreweriesHashMaps
                 .parallelStream()
@@ -45,7 +44,6 @@ public class SearchTest extends BaseTest {
 
     @Test(dataProvider = "dataProviderByPartlyMatch")
     public void assertPartlyMatchedInAllFields(String searchParam, int expectedFullMatchedCount, int expectedPartlyMatchedCount) throws IOException {
-
         String searchResponse = breweriesController.searchBreweries(searchParam);
 
         List<HashMap<String,String>> listOfBreweriesHashMaps = mapper.
@@ -80,6 +78,7 @@ public class SearchTest extends BaseTest {
                               {"TRIPLE", countOfBreweryWithTripleText}, // upperCase text
                               {" triple ", countOfBreweryWithTripleText}, // Lower case and starts with spaces
                               {"SANTA rosa", countOfBreweryWithSantaRosaText}, // url encoded text with spaced
+                              {"santa_rosa", countOfBreweryWithSantaRosaText}, // underscore as a space
                               {"", 0}, // empty param - search must return empty array
                               {"textWithNoFoundsObject", 0} // with this param search must return empty array
                               };
