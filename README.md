@@ -9,7 +9,7 @@ It is use the Levenshtein distance algorithm (https://en.wikipedia.org/wiki/Leve
 For this algorithm we can check some case like this:
 - Missing letter: Actual param - "Lews", Expected - "Lewis".
 - The letters are rearranged: Actual param - "Lewsi", Expected - "Lewis".
-The work of this algorithm i did not cover (maybe partly but it is hardcoded).
+The work of this algorithm i did not cover (maybe partly but it is hardcoded).\n
 **ATTENTION The autotest contains hardcoded data, for example, the expected number of searched objects, ideally this data should be taken from the database **
 
 2) Examine "List Breweries" method and share your thoughts (in readme file) on how you would apply test automation to it (what approach, test design techniques you'd choose etc).
